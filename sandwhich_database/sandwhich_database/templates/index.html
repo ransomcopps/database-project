@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandwich Maker</title>
 </head>
-<h1>Create Your Sandwich!</h1>
+<h1>Sandwich Builder</h1>
 <body>
-    <h1>Enter new engineer</h1>
-    <form action="/post-engineer" method="post">  
+    <h1>Enter your sandwich</h1>
+    <form action="/post-sandwich" method="post">  
         <input type="text" name="name" placeholder="Name">
         <input type="text" name="bread" placeholder="Bread">
         <input type="text" name="cheese" placeholder="Cheese">
@@ -17,6 +17,7 @@
         <input type="text" name="sauce" placeholder="Sauce">
         <input type="text" name="toping" placeholder="Toping">
         <input type="text" name="anything" placeholder="Anything">
+        <input type="text" name="creator" placeholder="Creator">
         <input type="Submit" value="Submit">
     </form>
     <table>
@@ -28,8 +29,9 @@
           <th>Sauce</th>
           <th>Toping</th>
           <th>Anything</th>
+          <th>Creator</th>
         </tr>
-        {% for sandwich in sandwichs %}
+        {% for sandwich in sandwiches %}
         <tr>
             <td>{{sandwich["name"]}}</td>
             <td>{{sandwich["bread"]}}</td>
@@ -38,11 +40,13 @@
             <td>{{sandwich["sauce"]}}</td>
             <td>{{sandwich["toping"]}}</td>
             <td>{{sandwich["anything"]}}</td>
+            <td>{{sandwich["creator"]}}</td>
+
             <td><a href="{{ '/edit/%s' %sandwich.rowid }}">Edit</a> |
                 <a href="{{ '/delete-sandwich/%s' %sandwich.rowid }}">Delete</a>
             </td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </table>
 </body>
 </html>
